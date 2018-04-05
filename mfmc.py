@@ -11,6 +11,7 @@ class graph:
         [0, 0, 9, 0, 0, 20],
         [0, 0, 0, 7, 0, 4],
         [0, 0, 0, 0, 0, 0]]
+        self.fgraph=[[0 for _ in range(n_v)]for _ in range(n_v)]
         self.res_graph = [[0, 16, 13, 0, 0, 0],
         [0, 0, 10, 12, 0, 0],
         [0, 4, 0, 0, 14, 0],
@@ -41,7 +42,7 @@ class graph:
     def DFS(self,u,t):
         visited=[False for _ in range(self.n)]
         self.dfs(u,t,visited)
-        # print("hell")      
+        # print("hell")
         if visited[t]==True:
             return True
         return False
@@ -64,6 +65,7 @@ class graph:
             node=T
             while(node!=S):
                 u=self.parent[node]
+                self.fgraph[u][node]+=path_flow
                 self.res_graph[u][node]-=path_flow
                 self.res_graph[node][u]+=path_flow
                 node=self.parent[node]
@@ -78,4 +80,5 @@ def main():
     # n_v,n_e=int(n_v),int(n_e)
     g=graph(6,10)
     g.mincut(0,5)
+    print(g.fgraph)
 main()
