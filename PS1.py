@@ -84,11 +84,22 @@ class Graph:
         # print the edges which initially had weights
 
         print(max_flow)
-
+        Final =[0 for i in range(sink+1)]
         for i in range(self.ROW):
             for j in range(self.COL):
                 if self.graph[i][j] == 0 and self.org_graph[i][j] > 0:
+                    if (i!=0 and j!=0) or (i!=sink and j!=sink):
+                        Final[i]=1
+                        Final[j]=1
+
+
                     print (str(i) + " - " + str(j))
+        Final[0]=0
+        Final[sink]=0
+        print("Projects to Be Chosen are : ")
+        for i in range(len(Final)):
+            if Final[i]==1:
+                print(i)
 
 
 print("Enter the Number of Projects")
