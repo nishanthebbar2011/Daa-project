@@ -2,11 +2,7 @@ class Node :
     def __init__(self,n,):
         self.number = n
         self.cost=0
-
-
 from collections import defaultdict
-
-
 # This class represents a directed graph using adjacency matrix representation
 class Graph:
     def __init__(self, graph):
