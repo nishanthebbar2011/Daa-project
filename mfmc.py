@@ -53,9 +53,26 @@ class graphs:
         #         if self.res_graph[i][j] == 0 and self.graph[i][j] > 0:
         #             print(str(i) + " - " + str(j))
 def main():
-    W=[83,80,78,77]
-    R=[[0,1,6,1],[1,0,0,2],[6,0,0,0],[1,2,0,0]]
-    n=4
+    # W=[83,80,78,77]
+    # R=[[0,1,6,1],[1,0,0,2],[6,0,0,0],[1,2,0,0]]
+    # n=4
+    lin=0
+    W=[]
+    R=[]
+    n=0
+    with open("inputforbaseball","r") as f:
+        for lines in f:
+            lin+=1
+            if lin==1:
+                n=int(lines.split()[0])
+            elif lin==2:
+                for i in lines.strip("\n").split():
+                    W.append(int(i))
+            else:
+                temp=[]
+                for i in lines.strip("\n").split():
+                    temp.append(int(i))
+                R.append(temp)
     for i in range(n):
         flag=0
         t=i
